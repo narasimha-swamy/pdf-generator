@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>converter</title>
+    <link rel="stylesheet" href="../app.css">
+    <script src="../renderer.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="in-div">
+            <div class="in-up-div">
+                <h1>Word to PDF</h1>
+            </div>
+            <hr>
+            <div class="upload-btn-wrapper">
+                <button class="btn">Upload a file</button>
+                <input type="file" id="word-file" name="myfile" />
+            </div>
+            <div class="submit">
+                <input type="submit" class="btn" value="Convert" onclick="wordtopdf()" style="font-size: 16px"><br />
+            </div>
+        </div>
+        <div class="in-div">
+            <div class="in-up-div">
+                <h1>PDF to Word</h1>
+            </div>
+            <hr>
+            <div class="upload-btn-wrapper">
+                <button class="btn">Upload a file</button>
+                <input type="file" id="Wpdf-file" name="myfile" />
+            </div>
+            <div class="submit">
+                <input type="submit" class="btn" value="Convert" onclick="pdftoword()" style="font-size: 16px"><br />
+            </div>
+        </div>
+        <div class="in-div">
+            <div class="in-up-div">
+                <h1>Excel to PDF</h1>
+            </div>
+            <hr>
+            <div class="upload-btn-wrapper">
+                <button class="btn">Upload a file</button>
+                <input type="file" id="excel-file" name="myfile" />
+            </div>
+            <div class="submit">
+                <input type="submit" class="btn" value="Convert" onclick="exceltopdf()" style="font-size: 16px"><br />
+            </div>
+        </div>
+        
+        <div class="in-div">
+            <div class="in-up-div">
+                <h1>PDF to Excel</h1>
+            </div>
+            <hr>
+            <div class="upload-btn-wrapper">
+                <button class="btn">Upload a file</button>
+                <input type="file" id="Edpf-file" name="myfile" />
+            </div>
+            <div class="submit">
+                <input type="submit" class="btn" value="Convert" onclick="pdftoexcel()" style="font-size: 16px"><br />
+            </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html> 
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../style.css">
+      <title>Document</title>
+   </head>
+   <body>
+    <div class="row">
+        <div class="in-div">
+            <a href="">
+                <div class="in-up-div">
+                    <input style="background-color: blue;" type="file" id="word-file" accept=".docx,.doc" >
+                    <input style="border-radius: 15%;" type="button" value="Submit" onclick="wordtopdf();">
+                </div>
+                <div class="in-down-div">
+                    <h3>
+                        Word to PDF
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <div class="in-div">
+            <a href="">
+                <div class="in-up-div">
+                    <img src="images/audiobook.jpg" width="100%" height="175px" style="border-radius: 10px 10px 0px 0px;" alt="">
+                </div>
+                <div class="in-down-div">
+                    <h3>
+                        Audiobook
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <div class="in-div">
+            <a href="">
+                <div class="in-up-div">
+                    <img src="images/extractpdf.png" width="100%" height="175px" style="border-radius: 10px 10px 0px 0px;" alt="">
+                </div>
+                <div class="in-down-div">
+                    <h3>
+                        Extract Page from PDF
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <div class="in-div">
+            <a href="">
+                <div class="in-up-div">
+                    <img src="images/rearrangepdf.png" width="100%" height="175px" style="border-radius: 10px 10px 0px 0px;" alt="">
+                </div>
+                <div class="in-down-div">
+                    <h3>
+                        Rearrange PDF
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <div class="in-div">
+            <a href="">
+                <div class="in-up-div">
+                    <img src="images/ocr.png" width="100%" height="175px" style="border-radius: 10px 10px 0px 0px;" alt="">
+                </div>
+                <div class="in-down-div">
+                    <h3>
+                        OCR PDF
+                    </h3>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+   </body>
+</html> -->

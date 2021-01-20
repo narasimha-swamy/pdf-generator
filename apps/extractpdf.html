@@ -1,0 +1,113 @@
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+    <title>CodePen - Render Multi-page PDF in Canvas using PDFJS</title>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="../renderer.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+<style>
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.btn {
+    border: 2px solid gray;
+    color: black;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+body {
+  text-align: center;
+}
+#holder {
+  background: #eee;
+  padding: 32px 0 16px 0;
+  list-style-type: none;
+}
+.canvas-wrapper {
+  margin-bottom: 16px;
+}
+canvas {
+  margin: 0 auto;
+  display: block;
+}
+</style>
+</head>
+<body translate="no">
+  <div class="upload-btn-wrapper">
+    <button class="btn">Upload a file</button>
+    <input type="file" id="extract-pdf" name="myfile" onchange="loadFile(event)" /> 
+  </div>
+  <div id="holder" style="border: 2px black;">
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.385/build/pdf.min.js"></script>
+      <script id="rendered-js">
+        var x = 0;
+        function renderPDF(url, canvasContainer, options) {
+          options = options || { scale: 0.45 };
+          function renderPage(page) {
+            var viewport = page.getViewport(options.scale);
+            var wrapper = document.createElement("div");
+            wrapper.className = "canvas-wrapper";
+            wrapper.style.display = 'inline';
+            wrapper.id = x;
+            x += 1;
+            wrapper.style.padding = '5px';
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var renderContext = {
+              canvasContext: ctx,
+              viewport: viewport };
+            canvas.style.display = 'inline';
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            wrapper.onclick = function() {
+                base_image = new Image();
+                base_image.src = '../images/selected.jpg';
+                ctx.drawImage(base_image, 0, 0,canvas.width, canvas.height);
+                console.log(wrapper.id)
+                // console.log()
+                extractpdf(wrapper.id);
+                alert('your file is extracted.');
+                window.location = '../index.html';
+              };
+            canvas.style.borderRadius = '10px 10px 10px 10px';
+            canvas.style.boxShadow = '0px 0px 10px';
+            wrapper.width = viewport.width;
+            wrapper.appendChild(canvas);
+            canvasContainer.appendChild(wrapper);
+
+            page.render(renderContext);
+          }
+          function renderPages(pdfDoc) {
+            for (var num = 1; num <= pdfDoc.numPages; num++) {
+              this.numpage = num;
+              pdfDoc.getPage(num).then(renderPage);
+            }
+          }
+          PDFJS.disableWorker = true;
+          PDFJS.getDocument(url).then(renderPages);
+        }
+        var loadFile = function(event) {
+          // var url = URL.createObjectURL(event.target.files[0])
+          renderPDF(document.getElementById('extract-pdf').files[0].path, document.getElementById('holder'))
+        };
+    </script>
+</body>
+</html>
